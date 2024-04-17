@@ -5,4 +5,6 @@ using UnityEngine;
 public class PlantList : MonoBehaviour
 {
     [SerializeField] private List<PlantType> _plantType;
+
+    
 }

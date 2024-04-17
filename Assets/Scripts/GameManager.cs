@@ -6,9 +6,11 @@ public class GameManager : MonoBehaviour
 {
     //references
     private static GameManager _instance;
+    private SpriteRenderer _gameFieldPrefab;
 
     //getter and setter
     public static GameManager Instance => _instance;
+    
 
     //parameters
     private int _width;
@@ -18,7 +20,7 @@ public class GameManager : MonoBehaviour
     {
         //create singleton of the manager
         if(_instance != null && _instance != this) Destroy(this);
-        else {_instance = this; DontDestroyOnLoad(this);}    
+        else { _instance = this; DontDestroyOnLoad(this); }    
     }
     
 }
