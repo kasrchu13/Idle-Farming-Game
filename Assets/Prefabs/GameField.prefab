@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8241424655216817048}
   - component: {fileID: 3555516953613589287}
+  - component: {fileID: 2056545218}
   m_Layer: 0
   m_Name: GameField
   m_TagString: Untagged
@@ -72,7 +73,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -3
   m_Sprite: {fileID: 21300000, guid: 625498320c227eb4d9be1bc443a02a9f, type: 3}
   m_Color: {r: 0.4750234, g: 0.8773585, b: 0.36832502, a: 1}
   m_FlipX: 0
@@ -84,3 +85,16 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2056545218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 217708025090081048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba584eb23ed9a43408aec5b89eafea46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _grassPrefabs: {fileID: 7358639796650609138, guid: d5f0bb05cac328a45ac24f8432a07131, type: 3}
