@@ -9,13 +9,15 @@ public class DataManager : MonoBehaviour
     public static DataManager Instance;
 
     //references
-    [SerializeField]private SpriteRenderer _playField;
+    [SerializeField] private SpriteRenderer _playField;
 
     //game parameters
-    [SerializeField]private int _plantLimit = 10;
-    [SerializeField]private int _minDrop = 3;
-    [SerializeField]private int _maxDrop = 5;
-    
+    [SerializeField] private int _plantLimit = 10;
+    [SerializeField] private int _minDrop = 3;
+    [SerializeField] private int _maxDrop = 5;
+
+    //Game Data
+    public List<GameObject> FruitList;
     //getter and setter
 
     private void Awake() {
@@ -27,7 +29,7 @@ public class DataManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame

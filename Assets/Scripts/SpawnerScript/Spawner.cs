@@ -26,7 +26,6 @@ public class Spawner : MonoBehaviour
             if(_canSpawn)
             {
                 SpawnPlant();
-                GameField.CurrentPlant++;
             }
             yield return new WaitForSeconds(1/spawnRate);
         }

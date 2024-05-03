@@ -114,8 +114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c21c07900345dfb4bb1f81d1fea5860c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: 
-  WorthGold: 0
+  _thisFruit: {fileID: 11400000, guid: 92d0956e171d00749945ec191eb66071, type: 2}
   _popRange: 1
   _popSpeed: 1
   _curve:

@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public struct FruitType
+[CreateAssetMenu]
+public class FruitType : ScriptableObject 
 {
-    public GameObject FruitObj;
+    public Sprite Icon;
     public string Name;
-    public int WorthGold;
+    public int Value;
+    public int MaxStack;
 
 }

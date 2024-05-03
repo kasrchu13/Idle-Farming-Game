@@ -9,21 +9,39 @@ using Random = UnityEngine.Random;
 
 //this script should assign to <GameObject> Grass
 public class Plant : MonoBehaviour, IHarvest
-{
-    [SerializeField] private List<FruitType> _fruitList;
+{   
+
+    private List<GameObject> _localFruitList;
+    private bool canHarvest => (Vector2) transform.localScale == _targetScale;
+
+    #region Plant Animation Parameters
     [SerializeField] private AnimationCurve _curve;
     [SerializeField] private float _growSpeed = 1;
     [Tooltip("According to the prefab's scale")]
     [SerializeField] private Vector2 _targetScale;
-    private GameObject _fruitPrefabs;
     private float _current = 0;
-    private bool canHarvest => (Vector2) transform.localScale == _targetScale;
+    #endregion
 
+    
+
+    private void Start()
+    {
+        _localFruitList = DataManager.Instance.FruitList;
+    }
     private void Update()
     {
         //plant grow
         _current = Mathf.MoveTowards(_current, 1, _growSpeed * Time.deltaTime);
         transform.localScale = Vector2.Lerp(Vector2.zero, _targetScale, _curve.Evaluate(_current));
+    }
+    private void OnEnable()
+    {
+        GameField.CurrentPlant++;
+    }
+
+    private void OnDestroy()
+    {
+        GameField.CurrentPlant--;
     }
 
     #region interface
@@ -32,12 +50,10 @@ public class Plant : MonoBehaviour, IHarvest
         if(!canHarvest) return;
 
         //randomly choose a fruit to drop
-        var choseFruit = Random.Range(0, _fruitList.Count);
+        var choseFruit = Random.Range(0, _localFruitList.Count);
 
         //assign the type to the object
-        _fruitPrefabs = _fruitList[choseFruit].FruitObj;
-        var temp = _fruitPrefabs.GetComponent<Fruit>();
-        temp.AssignType(_fruitList[choseFruit]);
+        var _fruitPrefabs = _localFruitList[choseFruit];
 
         //random amount of drop
         var DropNum = Random.Range(GameField.MinDrop, GameField.MaxDrop);
@@ -48,6 +64,8 @@ public class Plant : MonoBehaviour, IHarvest
         }
 
         Destroy(gameObject);
+
+
         GameField.CurrentPlant--;
     }
 
