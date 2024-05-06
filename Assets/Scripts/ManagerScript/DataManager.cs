@@ -18,6 +18,7 @@ public class DataManager : MonoBehaviour
 
     //Game Data
     public List<GameObject> FruitList;
+    public int Currency;
     //getter and setter
 
     private void Awake() {
