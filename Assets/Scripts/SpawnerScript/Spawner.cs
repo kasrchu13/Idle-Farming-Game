@@ -11,11 +11,14 @@ public class Spawner : MonoBehaviour
 
     //gmae field parameters
     [Range(1,5)]private float _spawnRate = 1;
-    private bool _canSpawn => GameField.CurrentPlant != GameField.PlantLimit;
 
     void Start()
     {
         StartCoroutine(StartSpawn(_spawnRate));
+    }
+    void Update()
+    {
+        
     }
 
 
@@ -23,7 +26,7 @@ public class Spawner : MonoBehaviour
     {
         while(true)
         {
-            if(_canSpawn)
+            if(GameField.CurrentPlant < GameField.PlantLimit)
             {
                 SpawnPlant();
             }

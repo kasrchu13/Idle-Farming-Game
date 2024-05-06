@@ -55,9 +55,8 @@ public class Fruit : MonoBehaviour, ICollectable
     {
         if(!canCollect) return;
         Debug.Log("collected");
-        _inventoryManager.Inventory.AddToInventory(_thisFruit, 1);
+        _inventoryManager.Container.AddToInventory(_thisFruit, 1);
         Destroy(gameObject);
-
     }
     
     #endregion

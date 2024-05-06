@@ -65,8 +65,6 @@ public class Plant : MonoBehaviour, IHarvest
 
         Destroy(gameObject);
 
-
-        GameField.CurrentPlant--;
     }
 
     #endregion

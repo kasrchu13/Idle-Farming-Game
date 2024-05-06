@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-[Serializable]
-public class InventoryConstructor
+[CreateAssetMenu]
+public class InventoryContainer : ScriptableObject
 {
     [SerializeField] private List<InventorySlot> _slotList;
 
@@ -13,7 +13,7 @@ public class InventoryConstructor
     public List<InventorySlot> SlotList => _slotList;
 
 
-    public InventoryConstructor(int size)
+    public InventoryContainer(int size)
     {
         _slotList = new List<InventorySlot>(size);
 
@@ -27,6 +27,7 @@ public class InventoryConstructor
     {
         //get the available slot to add
         var ValidSlot = FindAvailableSlot(fruitData);
+        //update on the found slot
         ValidSlot.UpdateSlot(fruitData, storedAmount);
     }
 
@@ -40,5 +41,40 @@ public class InventoryConstructor
         //if no slot with same type, find free slot;
         if(validSlot == null) validSlot = _slotList.First(item => item.FruitData == null);
         return validSlot;
+    }
+}
+
+[Serializable]
+public class InventorySlot
+{
+    //elements in a slot
+    [SerializeField] private FruitType _fruitData;
+    [SerializeField] private int _stacks;
+
+    //getter
+    public FruitType FruitData {get{return _fruitData;}}
+    public int Stacks {get{return _stacks;}}
+
+    public InventorySlot()
+    {
+        ClearSlot();
+    }
+
+    public void ClearSlot()
+    {
+        _fruitData = null;
+        _stacks = 0;
+    }
+
+    public void UpdateSlot(FruitType storedFruit, int changedAmount)
+    {
+        if(_fruitData == null) _fruitData = storedFruit;
+        _stacks += changedAmount;
+    }
+
+
+    public bool StackFull()
+    {
+        return _stacks == FruitData.MaxStack;
     }
 }

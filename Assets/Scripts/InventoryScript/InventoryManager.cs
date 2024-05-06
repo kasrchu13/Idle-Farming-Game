@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
-    [SerializeField] private int _inventorySize;
-    [SerializeField] protected InventoryConstructor _inventory;
-
+    /// <summary>
+    /// Manager stores different inventory sources
+    /// such as chest inventory, player inventory, etc.
+    /// Can be treated as centralized inventory checker
+    /// </summary>
+    [SerializeField] protected InventoryContainer _container;
     //getter
-    public InventoryConstructor Inventory => _inventory;
-
-    private void Awake() {
-        _inventory = new InventoryConstructor(_inventorySize);
-    }
+    public InventoryContainer Container => _container;
 }

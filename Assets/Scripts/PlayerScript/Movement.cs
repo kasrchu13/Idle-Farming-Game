@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class Movement : MonoBehaviour
 {
     //references
-    [SerializeField]private PlayerStats _stats;
+    private PlayerStats _stats;
 
     //references inside player
     private Rigidbody2D _rb;
@@ -17,7 +17,8 @@ public class Movement : MonoBehaviour
     private float _horizontal;
     private float _vertical;
 
-    private void Awake() {
+    private void Start() {
+        _stats = DataManager.Instance._playerSO;
         _rb = GetComponent<Rigidbody2D>();
 
         _frameInput = new FrameInput();

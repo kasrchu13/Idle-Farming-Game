@@ -10,6 +10,7 @@ public class DataManager : MonoBehaviour
 
     //references
     [SerializeField] private SpriteRenderer _playField;
+    [SerializeField] public PlayerStats _playerSO;
 
     //game parameters
     [SerializeField] private int _plantLimit = 10;
